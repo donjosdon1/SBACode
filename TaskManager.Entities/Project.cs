@@ -14,9 +14,9 @@ namespace CaseStudy.Entities
         public Int64 project_id { get; set; }
         public string project { get; set; }
 
-        public DateTime startdate { get; set; }
+        public DateTime? startdate { get; set; }
 
-        public DateTime enddate { get; set; }
+        public DateTime? enddate { get; set; }
         public int priority { get; set; }
     }
 }

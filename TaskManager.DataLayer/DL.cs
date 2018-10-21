@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CaseStudy.Entities;
 
-namespace TaskManager.DataLayer
+namespace CaseStudy.DataLayer
 {
     public class DL
     {

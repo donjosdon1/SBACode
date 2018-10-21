@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CaseStudy.Entities;
 
-namespace TaskManager.DataLayer
+namespace CaseStudy.DataLayer
 {
     public class helpercontext : DbContext
     {
@@ -20,6 +20,12 @@ namespace TaskManager.DataLayer
             modelBuilder.Entity<Tasks>()
                 .HasOptional(p => p.ParentTask)
                 .WithRequired(t => t.Tasks);
+            modelBuilder.Entity<Tasks>()
+                .HasOptional(p => p.Project);
+            modelBuilder.Entity<User>()
+                .HasOptional(p => p.Project);
+            modelBuilder.Entity<User>()
+                .HasOptional(p => p.Tasks);
         }
 
         public DbSet<ParentTask> Parenttask { get; set; }

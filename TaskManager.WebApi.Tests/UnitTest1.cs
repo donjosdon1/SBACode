@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TaskManager.WebApi.Controllers;
+using CaseStudy.WebApi.Controllers;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Routing;
@@ -9,7 +9,7 @@ using CaseStudy.Entities;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
-namespace TaskManager.WebApi.Tests
+namespace CaseStudy.WebApi.Tests
 {
     [TestClass]
     public class UnitTest1

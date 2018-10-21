@@ -1,6 +1,6 @@
 ﻿using NBench.Util;
 using NBench;
-using TaskManager.WebApi.Tests;
+using CaseStudy.WebApi.Tests;
 
 /// <summary>
 /// Test to see if we can achieve max throughput on a <see cref="AtomicCounter"/>

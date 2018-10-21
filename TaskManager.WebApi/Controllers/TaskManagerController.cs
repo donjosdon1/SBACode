@@ -5,10 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TaskManager.BusinessLayer;
+using CaseStudy.BusinessLayer;
 using CaseStudy.Entities;
 
-namespace TaskManager.WebApi.Controllers
+namespace CaseStudy.WebApi.Controllers
 {
     public class TaskManagerController : ApiController
     {

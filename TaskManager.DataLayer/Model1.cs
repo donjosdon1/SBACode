@@ -1,4 +1,4 @@
-namespace TaskManager.DataLayer
+namespace CaseStudy.DataLayer
 {
     using System;
     using System.Data.Entity;

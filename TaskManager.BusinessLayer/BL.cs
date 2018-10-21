@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskManager.DataLayer;
+using CaseStudy.DataLayer;
 using CaseStudy.Entities;
 
-namespace TaskManager.BusinessLayer
+namespace CaseStudy.BusinessLayer
 {
     public class BL
     {
