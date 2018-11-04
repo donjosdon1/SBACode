@@ -8,7 +8,7 @@ using Moq;
 using CaseStudy.Entities;
 using System.Diagnostics;
 
-namespace TaskManager.WebApi.Tests
+namespace CaseStudy.WebApi.Tests
 {
     [TestClass]
     public class UserTest

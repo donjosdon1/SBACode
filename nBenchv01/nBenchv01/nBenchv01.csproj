@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProjects.cs" />
+    <Compile Include="AddUsers.cs" />
     <Compile Include="AddTasks.cs" />
     <Compile Include="GetAllTasksCounter.cs" />
     <Compile Include="GetAllTasksJoin.cs" />

@@ -204,6 +204,18 @@ namespace CaseStudy.DataLayer
             else
                 return 0;
         }
+        public IQueryable<User> GetAllUsers()
+        {
+            var query = (from u in users
+                         select new User
+                         {
+                             user_id = u.user_id,
+                             firstname = u.firstname,
+                             lastname = u.lastname,
+                             employee_id = u.employee_id
+                         }).AsQueryable();
+            return query;
+        }
     }
     
 }
