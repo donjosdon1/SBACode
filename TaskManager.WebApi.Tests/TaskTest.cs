@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace CaseStudy.WebApi.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class TaskTest
     {
         [TestMethod]
         public void GetAllTasks()
@@ -100,10 +100,11 @@ namespace CaseStudy.WebApi.Tests
             // Act            
             TaskandParent t = new TaskandParent();
             t.task = "Task" + DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
-            t.priority = 10;
-            t.parent_id = 1;
-            t.start_date = DateTime.Now;
-            t.end_date = DateTime.Now;
+            t.isparent = 1;
+            //t.priority = 10;
+            //t.parent_id = 1;
+            t.start_date = null;
+            t.end_date = null;
             var response = controller.AddTaskwithParent(t);
             Trace.Write(response);
             // Assert

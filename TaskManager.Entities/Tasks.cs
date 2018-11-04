@@ -14,13 +14,13 @@ namespace CaseStudy.Entities
         public Int64 task_id { get; set; }
         
         public Int64? parent_id { get; set; }
-        public Int64 project_id { get; set; }
+        public Int64? project_id { get; set; }
 
         public string task { get; set; }
 
-        public DateTime start_date { get; set; }
+        public DateTime? start_date { get; set; }
 
-        public DateTime end_date { get; set; }
+        public DateTime? end_date { get; set; }
 
         public int priority { get; set; }
         public int taskended { get; set; }

@@ -15,11 +15,12 @@ namespace CaseStudy.Entities
         public string task { get; set; }
         public string parent_task { get; set; }
 
-        public DateTime start_date { get; set; }
+        public DateTime? start_date { get; set; }
 
-        public DateTime end_date { get; set; }
+        public DateTime? end_date { get; set; }
 
         public int priority { get; set; }
         public int taskended { get; set; }
+        public int isparent { get; set; }
     }
 }

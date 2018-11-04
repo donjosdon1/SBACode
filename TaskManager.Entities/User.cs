@@ -17,7 +17,7 @@ namespace CaseStudy.Entities
         public string employee_id { get; set; }
         public Int64? project_id { get; set; }
         public Int64? task_id { get; set; }
-        public Tasks Tasks { get; set; }
+        public virtual Tasks Tasks { get; set; }
         public virtual Project Project { get; set; }
     }
 }

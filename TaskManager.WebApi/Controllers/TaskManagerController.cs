@@ -24,7 +24,7 @@ namespace CaseStudy.WebApi.Controllers
             tasks.priority = tp.priority;
             tasks.start_date = tp.start_date;
             tasks.end_date = tp.end_date;
-            return bl.AddTaskwithParent(tasks);
+            return bl.AddTaskwithParent(tasks, tp.isparent);
         }
         [HttpPost]
         [Route("api/EditTask")]

@@ -26,7 +26,7 @@ public class AddTasks
     {
         //var b = new byte[1024];
         //_counter.Increment();
-        UnitTest1 u = new UnitTest1();
+        TaskTest u = new TaskTest();
         u.AddTaskwithParent();
     }
 

@@ -11,9 +11,9 @@ namespace CaseStudy.BusinessLayer
     public class BL
     {
         public DL dl = new DL();
-        public int AddTaskwithParent(Tasks tasks)
+        public int AddTaskwithParent(Tasks tasks, int isparent)
         {
-            return dl.AddTaskwithParent(tasks);
+            return dl.AddTaskwithParent(tasks, isparent);
         }
         public int UpdateTask(Tasks tasks)
         {
@@ -38,6 +38,30 @@ namespace CaseStudy.BusinessLayer
         public int EndTask(Int64 taskid)
         {
             return dl.EndTask(taskid);
+        }
+        public int AddUser(User user)
+        {
+            return dl.AddUser(user);
+        }
+        public int EditUser(User user)
+        {
+            return dl.EditUser(user);
+        }
+        public int RemoveUser(User user)
+        {
+            return dl.RemoveUser(user);
+        }
+        public int AddProject(Project proj, Int64 user_id)
+        {
+            return dl.AddProject(proj, user_id);
+        }
+        public int EditProject(projectandmanager proj)
+        {
+            return dl.EditProject(proj);
+        }
+        public int RemoveProject(Project proj)
+        {
+            return dl.RemoveProject(proj);
         }
     }
 }

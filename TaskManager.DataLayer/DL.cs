@@ -10,9 +10,9 @@ namespace CaseStudy.DataLayer
     public class DL
     {
         helpercontext context = new helpercontext();
-        public int AddTaskwithParent(Tasks tasks)
+        public int AddTaskwithParent(Tasks tasks, int isparent)
         {
-            return context.AddTaskwithParent(tasks);
+            return context.AddTaskwithParent(tasks, isparent);
         }
         public int UpdateTask(Tasks tasks)
         {
@@ -41,6 +41,31 @@ namespace CaseStudy.DataLayer
         public int EndTask(Int64 taskid)
         {
             return context.EndTask(taskid);
+        }
+
+        public int AddUser(User user)
+        {
+            return context.AddUser(user);
+        }
+        public int EditUser(User user)
+        {
+            return context.EditUser(user);
+        }
+        public int RemoveUser(User user)
+        {
+            return context.RemoveUser(user);
+        }
+        public int AddProject(Project proj, Int64 user_id)
+        {
+            return context.AddProject(proj, user_id);
+        }
+        public int EditProject(projectandmanager proj)
+        {
+            return context.EditProject(proj);
+        }
+        public int RemoveProject(Project proj)
+        {
+            return context.RemoveProject(proj);
         }
     }
 }
