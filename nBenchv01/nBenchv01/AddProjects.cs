@@ -26,7 +26,7 @@ public class AddProjects
     {
         //var b = new byte[1024];
         //_counter.Increment();
-        ProjectTest p = new ProjectTest();
+        ProjectTest p = new ProjectTest(); 
         p.AddProject();
     }
 
