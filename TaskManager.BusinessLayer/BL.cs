@@ -63,5 +63,17 @@ namespace CaseStudy.BusinessLayer
         {
             return dl.RemoveProject(proj);
         }
+        public IQueryable<User> GetAllUsers()
+        {
+            return dl.GetAllUsers();
+        }
+        public IQueryable<User> GetUser(Int64 user_id)
+        {
+            return dl.GetUser(user_id);
+        }
+        public IQueryable<ProjectDetails> GetAllProjects()
+        {
+            return dl.GetAllProjects();
+        }
     }
 }

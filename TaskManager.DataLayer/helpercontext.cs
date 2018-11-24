@@ -216,6 +216,37 @@ namespace CaseStudy.DataLayer
                          }).AsQueryable();
             return query;
         }
+        public IQueryable<User> GetUser(Int64 user_id)
+        {
+            var query = (from u in users
+                         select new User
+                         {
+                             user_id = u.user_id,
+                             firstname = u.firstname,
+                             lastname = u.lastname,
+                             employee_id = u.employee_id
+                         }).Where(e=>e.user_id==user_id).AsQueryable();
+            return query;
+        }
+
+        public IQueryable<ProjectDetails> GetAllProjects()
+        {
+            var query = (from proj in projects
+                         join task in Task on proj.project_id equals task.project_id into details
+                         from m in details.DefaultIfEmpty()
+                         select new ProjectDetails
+                         {
+                             project_id = proj.project_id,
+                             project = proj.project,
+                             startdate = proj.startdate,
+                             enddate = proj.enddate,
+                             priority = proj.priority,
+                             numberoftasks = details.Count(),
+                             Completed = "No"
+                             }).AsQueryable();
+                return query;
+        }       
+
     }
     
 }

@@ -35,5 +35,11 @@ namespace CaseStudy.WebApi.Controllers
         {
             return bl.RemoveProject(proj);
         }
+        [HttpGet]
+        [Route("api/GetAllProjects")]
+        public IQueryable<ProjectDetails> GetAllProjects()
+        {
+            return bl.GetAllProjects();
+        }
     }
 }

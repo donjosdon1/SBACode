@@ -29,5 +29,17 @@ namespace CaseStudy.WebApi.Controllers
         {
             return bl.RemoveUser(user);
         }
+        [HttpGet]
+        [Route("api/GetAllUsers")]
+        public IQueryable<User> GetAllUsers()
+        {
+            return bl.GetAllUsers();
+        }
+        [HttpPost]
+        [Route("api/GetUser")]
+        public IQueryable<User> GetUser(Int64 user_id)
+        {
+            return bl.GetUser(user_id);
+        }
     }
 }

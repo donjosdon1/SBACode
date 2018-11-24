@@ -67,5 +67,17 @@ namespace CaseStudy.DataLayer
         {
             return context.RemoveProject(proj);
         }
+        public IQueryable<User> GetAllUsers()
+        {
+            return context.GetAllUsers();
+        }
+        public IQueryable<User> GetUser(Int64 user_id)
+        {
+            return context.GetUser(user_id);
+        }
+        public IQueryable<ProjectDetails> GetAllProjects()
+        {
+            return context.GetAllProjects();
+        }
     }
 }
