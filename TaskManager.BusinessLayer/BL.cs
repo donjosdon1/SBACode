@@ -73,7 +73,7 @@ namespace CaseStudy.BusinessLayer
         }
         public IQueryable<ProjectDetails> GetAllProjects()
         {
-            return dl.GetAllProjects();
+            return dl.GetAllProjects(); 
         }
     }
 }
