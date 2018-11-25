@@ -106,11 +106,15 @@ namespace CaseStudy.DataLayer
                              task_id = task.task_id,
                              parent_id = task.parent_id,
                              task = task.task,
-                             parent_task = (m.parent_task!=null? m.parent_task : string.Empty),
+                             parent_task = (m.parent_task != null ? m.parent_task : string.Empty),
                              start_date = task.start_date,
                              end_date = task.end_date,
                              priority = task.priority,
-                             taskended = task.taskended
+                             taskended = task.taskended,
+                             project_id = task.project_id,
+                             project = task.project_id == null ? string.Empty : (projects.Find(task.project_id).project),
+                             username = users.Where(u => u.task_id == task.task_id) == null ? string.Empty : users.Where(u => u.task_id == task.task_id).FirstOrDefault().firstname,
+                             user_id = users.Where(u => u.task_id == task.task_id) == null ? 0 : users.Where(u => u.task_id == task.task_id).FirstOrDefault().user_id
                          }).Where(x => x.task_id == taskid).AsQueryable();
             return query.ToList<TaskandParent>();
         }
