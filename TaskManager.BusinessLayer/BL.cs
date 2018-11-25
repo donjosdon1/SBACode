@@ -11,9 +11,9 @@ namespace CaseStudy.BusinessLayer
     public class BL
     {
         public DL dl = new DL();
-        public int AddTaskwithParent(Tasks tasks, int isparent)
+        public int AddTaskwithParent(Tasks tasks, int isparent, Int64 user_id)
         {
-            return dl.AddTaskwithParent(tasks, isparent);
+            return dl.AddTaskwithParent(tasks, isparent, user_id);
         }
         public int UpdateTask(Tasks tasks)
         {

@@ -10,9 +10,9 @@ namespace CaseStudy.DataLayer
     public class DL
     {
         helpercontext context = new helpercontext();
-        public int AddTaskwithParent(Tasks tasks, int isparent)
+        public int AddTaskwithParent(Tasks tasks, int isparent, Int64 user_id)
         {
-            return context.AddTaskwithParent(tasks, isparent);
+            return context.AddTaskwithParent(tasks, isparent, user_id);
         }
         public int UpdateTask(Tasks tasks)
         {

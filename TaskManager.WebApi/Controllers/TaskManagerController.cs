@@ -22,9 +22,13 @@ namespace CaseStudy.WebApi.Controllers
             tasks.task = tp.task;
             tasks.parent_id = tp.parent_id;
             tasks.priority = tp.priority;
+            if (tp.project_id != 0)
+                tasks.project_id = tp.project_id;
+            else
+                tasks.project_id = null; 
             tasks.start_date = tp.start_date;
             tasks.end_date = tp.end_date;
-            return bl.AddTaskwithParent(tasks, tp.isparent);
+            return bl.AddTaskwithParent(tasks, tp.isparent, tp.user_id);
         }
         [HttpPost]
         [Route("api/EditTask")]

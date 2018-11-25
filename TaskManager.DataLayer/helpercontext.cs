@@ -33,7 +33,7 @@ namespace CaseStudy.DataLayer
         public DbSet<User> users { get; set; }
         public DbSet<Project> projects { get; set; }
 
-        public int AddTaskwithParent(Tasks tasks, int isparent)
+        public int AddTaskwithParent(Tasks tasks, int isparent, Int64 user_id)
         {
             if (isparent==1)
             {
@@ -42,6 +42,16 @@ namespace CaseStudy.DataLayer
                 Parenttask.Add(ptask);
             }
             Task.Add(tasks);
+            if(user_id!=0)
+            {
+                User u = users.Find(user_id);
+                if(u!=null)
+                {
+                    u.project_id = tasks.project_id;
+                    u.task_id = tasks.task_id;
+                }
+            }
+
             return this.SaveChanges();
         }
 

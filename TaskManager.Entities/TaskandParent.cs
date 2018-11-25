@@ -14,6 +14,8 @@ namespace CaseStudy.Entities
 
         public string task { get; set; }
         public string parent_task { get; set; }
+        public Int64? project_id { get; set; }
+        public Int64 user_id { get; set; }
 
         public DateTime? start_date { get; set; }
 
