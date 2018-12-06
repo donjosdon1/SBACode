@@ -21,7 +21,7 @@ namespace CaseStudy.WebApi.Tests
             controller.Configuration = new HttpConfiguration();
 
             string locationUrl = "http://localhost:55396/api/AddUser";
-
+             
             // Create the mock and set up the Link method, which is used to create the Location header.
             // The mock version returns a fixed string.
             var mockUrlHelper = new Mock<UrlHelper>();
