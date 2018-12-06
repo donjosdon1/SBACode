@@ -49,6 +49,7 @@
     <Compile Include="TaskandParent.cs" />
     <Compile Include="Tasks.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserDetails.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

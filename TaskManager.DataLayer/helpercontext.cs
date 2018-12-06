@@ -22,18 +22,18 @@ namespace CaseStudy.DataLayer
                 .WithRequired(t => t.Tasks);
             modelBuilder.Entity<Tasks>()
                 .HasOptional(p => p.Project);
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<CaseStudy.Entities.User>()
                 .HasOptional(p => p.Project);
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<CaseStudy.Entities.User>()
                 .HasOptional(p => p.Tasks);
         }
 
         public DbSet<ParentTask> Parenttask { get; set; }
         public DbSet<Tasks> Task { get; set; }
-        public DbSet<User> users { get; set; }
+        public DbSet<CaseStudy.Entities.User> users { get; set; }
         public DbSet<Project> projects { get; set; }
 
-        public int AddTaskwithParent(Tasks tasks, int isparent, Int64 user_id)
+        public int AddTaskwithParent(Tasks tasks, int isparent, Int64? user_id)
         {
             if (isparent==1)
             {
@@ -42,7 +42,7 @@ namespace CaseStudy.DataLayer
                 Parenttask.Add(ptask);
             }
             Task.Add(tasks);
-            if(user_id!=0)
+            if(user_id != null && user_id !=0)
             {
                 User u = users.Find(user_id);
                 if(u!=null)
@@ -99,22 +99,26 @@ namespace CaseStudy.DataLayer
         public List<TaskandParent> GetTask(Int64 taskid)
         {
             var query = (from task in Task
-                         join parenttask in Parenttask on task.parent_id equals parenttask.parent_id into details
+                         join parenttask in Parenttask on task.parent_id equals parenttask.parent_id into a
+                         from aa in a.DefaultIfEmpty()
+                         join p in projects on task.project_id equals p.project_id into b
+                         from bb in b.DefaultIfEmpty()
+                         join u in users on task.task_id equals u.task_id into details
                          from m in details.DefaultIfEmpty()
                          select new TaskandParent
                          {
                              task_id = task.task_id,
-                             parent_id = task.parent_id,
+                             parent_id = aa.parent_id,
                              task = task.task,
-                             parent_task = (m.parent_task != null ? m.parent_task : string.Empty),
+                             parent_task = (aa.parent_task != null ? aa.parent_task : string.Empty),
                              start_date = task.start_date,
                              end_date = task.end_date,
                              priority = task.priority,
                              taskended = task.taskended,
                              project_id = task.project_id,
-                             project = task.project_id == null ? string.Empty : (projects.Find(task.project_id).project),
-                             username = users.Where(u => u.task_id == task.task_id) == null ? string.Empty : users.Where(u => u.task_id == task.task_id).FirstOrDefault().firstname,
-                             user_id = users.Where(u => u.task_id == task.task_id) == null ? 0 : users.Where(u => u.task_id == task.task_id).FirstOrDefault().user_id
+                             project = task.project_id == null ? string.Empty : bb.project,
+                             username = m.firstname + " " + m.lastname ,
+                             user_id = m.user_id
                          }).Where(x => x.task_id == taskid).AsQueryable();
             return query.ToList<TaskandParent>();
         }
@@ -144,12 +148,12 @@ namespace CaseStudy.DataLayer
             t.taskended = 1;
             return this.SaveChanges();
         }
-        public int AddUser(User user)
+        public int AddUser(CaseStudy.Entities.User user)
         {            
             users.Add(user);
             return this.SaveChanges();
         }
-        public int EditUser(User user)
+        public int EditUser(CaseStudy.Entities.User user)
         {
             if (user.user_id > 0)
             {
@@ -164,11 +168,11 @@ namespace CaseStudy.DataLayer
             else
                 return 0;
         }
-        public int RemoveUser(User user)
+        public int RemoveUser(CaseStudy.Entities.User user)
         {
             if (user.user_id > 0)
             {
-                User u = users.Find(user.user_id);
+                CaseStudy.Entities.User u = users.Find(user.user_id);
                 users.Remove(user);
                 return this.SaveChanges();
             }
@@ -180,7 +184,7 @@ namespace CaseStudy.DataLayer
             proj = projects.Add(proj);
             if (proj.project_id > 0 && user_id>0 )
             {
-                User u = users.Find(user_id);
+                CaseStudy.Entities.User u = users.Find(user_id);
                 u.project_id = proj.project_id;
             }
             return this.SaveChanges();
@@ -196,7 +200,7 @@ namespace CaseStudy.DataLayer
                 project.priority = proj.priority;  
                 if(proj.user_id>0)
                 {
-                    User u = users.Find(proj.user_id);
+                    CaseStudy.Entities.User u = users.Find(proj.user_id);
                     u.project_id = proj.project_id;
                 }
                 return this.SaveChanges();
@@ -218,22 +222,30 @@ namespace CaseStudy.DataLayer
             else
                 return 0;
         }
-        public IQueryable<User> GetAllUsers()
+        public List<UserDetails> GetAllUsers()
         {
-            var query = (from u in users
-                         select new User
-                         {
-                             user_id = u.user_id,
-                             firstname = u.firstname,
-                             lastname = u.lastname,
-                             employee_id = u.employee_id
-                         }).AsQueryable();
-            return query;
+            try
+            {
+                var query = (from u in users
+                             select new UserDetails
+                             {
+                                 user_id = u.user_id,
+                                 firstname = u.firstname,
+                                 lastname = u.lastname,
+                                 employee_id = u.employee_id
+                             });
+                return query.ToList<UserDetails>();
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            
         }
-        public IQueryable<User> GetUser(Int64 user_id)
+        public IQueryable<CaseStudy.Entities.User> GetUser(Int64 user_id)
         {
             var query = (from u in users
-                         select new User
+                         select new CaseStudy.Entities.User
                          {
                              user_id = u.user_id,
                              firstname = u.firstname,
