@@ -71,7 +71,7 @@ namespace CaseStudy.DataLayer
         {
             return context.GetAllUsers();
         }
-        public IQueryable<CaseStudy.Entities.User> GetUser(Int64 user_id)
+        public IQueryable<CaseStudy.Entities.UserDetails> GetUser(Int64 user_id)
         {
             return context.GetUser(user_id);
         }

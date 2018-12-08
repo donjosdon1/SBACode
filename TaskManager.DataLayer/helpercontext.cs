@@ -242,10 +242,10 @@ namespace CaseStudy.DataLayer
             }
             
         }
-        public IQueryable<CaseStudy.Entities.User> GetUser(Int64 user_id)
+        public IQueryable<CaseStudy.Entities.UserDetails> GetUser(Int64 user_id)
         {
             var query = (from u in users
-                         select new CaseStudy.Entities.User
+                         select new CaseStudy.Entities.UserDetails
                          {
                              user_id = u.user_id,
                              firstname = u.firstname,

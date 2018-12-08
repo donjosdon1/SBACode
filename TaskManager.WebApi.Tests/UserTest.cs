@@ -29,7 +29,7 @@ namespace CaseStudy.WebApi.Tests
             controller.Url = mockUrlHelper.Object;
 
             // Act            
-            User u = new User();
+            UserDetails u = new UserDetails();
             u.firstname = "FName" + DateTime.Now.ToLongDateString();
             u.lastname = "LName" + DateTime.Now.ToLongDateString();
             u.employee_id = "EmployeeID" + DateTime.Now.ToLongDateString();

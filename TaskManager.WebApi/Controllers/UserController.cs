@@ -14,9 +14,15 @@ namespace CaseStudy.WebApi.Controllers
         public BL bl = new BL();
         [HttpPost]
         [Route("api/AddUser")]
-        public int AddUser([FromBody] CaseStudy.Entities.User user)
-        {            
-            return bl.AddUser(user);
+        public int AddUser([FromBody] UserDetails user)
+        {
+            Entities.User u = new Entities.User();
+            u.employee_id = user.employee_id;
+            u.firstname = user.firstname;
+            u.lastname = user.lastname;
+            u.project_id = null;
+            u.task_id = null;
+            return bl.AddUser(u);
         }
         [HttpPost]
         [Route("api/EditUser")]
@@ -37,9 +43,9 @@ namespace CaseStudy.WebApi.Controllers
             var a= bl.GetAllUsers().AsQueryable<UserDetails>();
             return a;
         }
-        [HttpPost]
-        [Route("api/GetUser")]
-        public IQueryable<CaseStudy.Entities.User> GetUser(Int64 user_id)
+        [HttpGet]
+        [Route("api/GetUser/{user_id}")]
+        public IQueryable<CaseStudy.Entities.UserDetails> GetUser(Int64 user_id)
         {
             return bl.GetUser(user_id);
         }

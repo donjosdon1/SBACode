@@ -67,7 +67,7 @@ namespace CaseStudy.BusinessLayer
         {
             return dl.GetAllUsers();
         }
-        public IQueryable<CaseStudy.Entities.User> GetUser(Int64 user_id)
+        public IQueryable<CaseStudy.Entities.UserDetails> GetUser(Int64 user_id)
         {
             return dl.GetUser(user_id);
         }
