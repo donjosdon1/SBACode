@@ -85,5 +85,27 @@ namespace CaseStudy.WebApi.Tests
             var response = controller.RemoveProject(p);
             Trace.Write(response);
         }
+        [TestMethod]
+        public void GetAllProjects()
+        {
+            ProjectController controller = new ProjectController();
+            controller.Request = new HttpRequestMessage();
+            controller.Configuration = new HttpConfiguration();
+
+            string locationUrl = "http://localhost:55396/api/getallprojects";
+
+            // Create the mock and set up the Link method, which is used to create the Location header.
+            // The mock version returns a fixed string.
+            var mockUrlHelper = new Mock<UrlHelper>();
+            mockUrlHelper.Setup(x => x.Link(It.IsAny<string>(), It.IsAny<object>())).Returns(locationUrl);
+            controller.Url = mockUrlHelper.Object;
+
+            // Act            
+            var response = controller.GetAllProjects();
+            Trace.Write(response);
+            // Assert
+            //Assert.AreEqual(locationUrl, response.Headers.Location.AbsoluteUri);
+
+        }
     }
 }

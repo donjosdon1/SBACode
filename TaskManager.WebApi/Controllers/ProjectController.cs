@@ -41,5 +41,11 @@ namespace CaseStudy.WebApi.Controllers
         {
             return bl.GetAllProjects();
         }
+        [HttpGet]
+        [Route("api/GetProjectByID/{project_id}")]
+        public IQueryable<ProjectDetails> GetProjectByID(Int64 project_id)
+        {
+            return bl.GetProjectByID(project_id);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace CaseStudy.Entities
     public class projectandmanager : Project
     {
         public Int64 user_id { get; set; }
+        public Int64 username { get; set; }
     }
 }

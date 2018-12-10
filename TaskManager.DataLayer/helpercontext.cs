@@ -269,10 +269,26 @@ namespace CaseStudy.DataLayer
                              priority = proj.priority,
                              numberoftasks = details.Count(),
                              Completed = "No"
-                             }).AsQueryable();
+                             }).Distinct().AsQueryable();
                 return query;
-        }       
-
+        }
+        public IQueryable<ProjectDetails> GetProjectByID(Int64 project_id)
+        {
+            var query = (from proj in projects
+                         join task in Task on proj.project_id equals task.project_id into details
+                         from m in details.DefaultIfEmpty()
+                         select new ProjectDetails
+                         {
+                             project_id = proj.project_id,
+                             project = proj.project,
+                             startdate = proj.startdate,
+                             enddate = proj.enddate,
+                             priority = proj.priority,
+                             numberoftasks = details.Count(),
+                             Completed = "No"
+                         }).Where(x=>x.project_id==project_id).AsQueryable();
+            return query;
+        }
     }
     
 }

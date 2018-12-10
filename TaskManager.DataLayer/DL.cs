@@ -79,5 +79,9 @@ namespace CaseStudy.DataLayer
         {
             return context.GetAllProjects();
         }
+        public IQueryable<ProjectDetails> GetProjectByID(Int64 project_id)
+        {
+            return context.GetProjectByID(project_id);
+        }
     }
 }

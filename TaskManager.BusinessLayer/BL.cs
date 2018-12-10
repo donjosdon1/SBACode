@@ -75,5 +75,9 @@ namespace CaseStudy.BusinessLayer
         {
             return dl.GetAllProjects(); 
         }
+        public IQueryable<ProjectDetails> GetProjectByID(Int64 project_id)
+        {
+            return dl.GetProjectByID(project_id);
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace CaseStudy.Entities
             public DateTime? enddate { get; set; }
             public int priority { get; set; }
             public int numberoftasks { get; set; }
-            public string Completed { get; set; }        
+            public string Completed { get; set; }
     }
 }
