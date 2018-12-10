@@ -19,23 +19,35 @@ namespace CaseStudy.WebApi.Tests
             UserController controller = new UserController();
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
-
-            string locationUrl = "http://localhost:55396/api/AddUser";
-             
-            // Create the mock and set up the Link method, which is used to create the Location header.
-            // The mock version returns a fixed string.
-            var mockUrlHelper = new Mock<UrlHelper>();
-            mockUrlHelper.Setup(x => x.Link(It.IsAny<string>(), It.IsAny<object>())).Returns(locationUrl);
-            controller.Url = mockUrlHelper.Object;
-
-            // Act            
             UserDetails u = new UserDetails();
-            u.firstname = "FName" + DateTime.Now.ToLongDateString();
-            u.lastname = "LName" + DateTime.Now.ToLongDateString();
-            u.employee_id = "EmployeeID" + DateTime.Now.ToLongDateString();
-            
-            var response = controller.AddUser(u);
-            Trace.Write(response);
+            string locationUrl = "http://localhost:55396/api/AddUser";
+            try
+            {
+                // Create the mock and set up the Link method, which is used to create the Location header.
+                // The mock version returns a fixed string.
+                var mockUrlHelper = new Mock<UrlHelper>();
+                mockUrlHelper.Setup(x => x.Link(It.IsAny<string>(), It.IsAny<object>())).Returns(locationUrl);
+                controller.Url = mockUrlHelper.Object;
+
+                // Act            
+                
+                u.firstname = "FName" + DateTime.Now.ToLongDateString();
+                u.lastname = "LName" + DateTime.Now.ToLongDateString();
+                u.employee_id = "EmployeeID" + DateTime.Now.ToLongDateString();
+
+                var response = controller.AddUser(u);
+                Trace.Write(response);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                controller = null;
+                locationUrl = null;
+                u = null;
+            }
         }
         [TestMethod]
         public void EditUser()

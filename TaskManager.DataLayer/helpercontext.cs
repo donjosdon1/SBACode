@@ -173,7 +173,7 @@ namespace CaseStudy.DataLayer
             if (user.user_id > 0)
             {
                 CaseStudy.Entities.User u = users.Find(user.user_id);
-                users.Remove(user);
+                users.Remove(u);
                 return this.SaveChanges();
             }
             else
@@ -212,9 +212,14 @@ namespace CaseStudy.DataLayer
         {
             if (proj.project_id > 0)
             {
-                User u = users.SingleOrDefault(e => e.project_id == proj.project_id);
-                if (u != null && u.user_id > 0)
-                    u.project_id = null;                
+                List<User> u = users.Where(e => e.project_id == proj.project_id).ToList<User>();
+                if (u != null)
+                    foreach(var uu in u)
+                    uu.project_id = null;
+                List<Tasks> t = Task.Where(e => e.project_id == proj.project_id).ToList<Tasks>();
+                if (t != null)
+                    foreach (var tt in t)
+                        tt.project_id = null;
                 proj = projects.Find(proj.project_id);
                 projects.Remove(proj);
                 return this.SaveChanges();

@@ -127,7 +127,7 @@ namespace CaseStudy.WebApi.Tests
             controller.Url = mockUrlHelper.Object;
 
             // Act                        
-            var response = controller.EndTask(20004);
+            var response = controller.EndTask(1);
             Trace.Write(response);
             // Assert
             //Assert.AreEqual(locationUrl, response.Headers.Location.AbsoluteUri);
