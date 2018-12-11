@@ -18,8 +18,8 @@ public class AddProjects
     }
 
     [PerfBenchmark(Description = "Test to ensure that a minimal throughput test can be rapidly executed.",
-        NumberOfIterations = 10, RunMode = RunMode.Throughput,
-        RunTimeMilliseconds = 1000, TestMode = TestMode.Measurement)]
+        NumberOfIterations = 500, RunMode = RunMode.Throughput,
+        RunTimeMilliseconds = 600000, TestMode = TestMode.Measurement)]
     [CounterMeasurement("AddProjects")]
     [MemoryMeasurement(MemoryMetric.TotalBytesAllocated)]    
     public void BenchmarkMethod(BenchmarkContext context)
