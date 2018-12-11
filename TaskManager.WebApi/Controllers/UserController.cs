@@ -30,12 +30,12 @@ namespace CaseStudy.WebApi.Controllers
         {
             return bl.EditUser(user);
         }
-        [HttpPost]
-        [Route("api/RemoveUser")]
-        public int RemoveUser([FromBody] CaseStudy.Entities.User user)
-        {
-            return bl.RemoveUser(user);
-        }
+        //[HttpPost]
+        //[Route("api/RemoveUser")]
+        //public int RemoveUser([FromBody] CaseStudy.Entities.User user)
+        //{
+        //    return bl.RemoveUser(user);
+        //}
         [HttpGet]
         [Route("api/GetAllUsers")]
         public IQueryable<UserDetails> GetAllUsers()

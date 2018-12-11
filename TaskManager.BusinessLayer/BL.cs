@@ -31,10 +31,10 @@ namespace CaseStudy.BusinessLayer
         {
             return dl.GetTask(taskid);
         }
-        public int RemoveTask(Int64 taskid)
-        {
-            return dl.RemoveTask(taskid);
-        }
+        //public int RemoveTask(Int64 taskid)
+        //{
+        //    return dl.RemoveTask(taskid);
+        //}
         public int EndTask(Int64 taskid)
         {
             return dl.EndTask(taskid);
@@ -47,10 +47,10 @@ namespace CaseStudy.BusinessLayer
         {
             return dl.EditUser(user);
         }
-        public int RemoveUser(CaseStudy.Entities.User user)
-        {
-            return dl.RemoveUser(user);
-        }
+        //public int RemoveUser(CaseStudy.Entities.User user)
+        //{
+        //    return dl.RemoveUser(user);
+        //}
         public int AddProject(Project proj, Int64 user_id)
         {
             return dl.AddProject(proj, user_id);

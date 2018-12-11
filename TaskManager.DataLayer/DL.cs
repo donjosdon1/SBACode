@@ -33,10 +33,10 @@ namespace CaseStudy.DataLayer
             return context.GetTask(taskid);
         }
 
-        public int RemoveTask(Int64 taskid)
-        {
-            return context.RemoveTask(taskid);
-        }
+        //public int RemoveTask(Int64 taskid)
+        //{
+        //    return context.RemoveTask(taskid);
+        //}
 
         public int EndTask(Int64 taskid)
         {
@@ -51,10 +51,10 @@ namespace CaseStudy.DataLayer
         {
             return context.EditUser(user);
         }
-        public int RemoveUser(CaseStudy.Entities.User user)
-        {
-            return context.RemoveUser(user);
-        }
+        //public int RemoveUser(CaseStudy.Entities.User user)
+        //{
+        //    return context.RemoveUser(user);
+        //}
         public int AddProject(Project proj, Int64 user_id)
         {
             return context.AddProject(proj, user_id);

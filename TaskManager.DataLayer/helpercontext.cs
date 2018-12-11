@@ -122,26 +122,26 @@ namespace CaseStudy.DataLayer
                          }).Where(x => x.task_id == taskid).AsQueryable();
             return query.ToList<TaskandParent>();
         }
-        public int RemoveTask(Int64 taskid)
-        {
-            var query = (from task in Task
-                         where task.parent_id == taskid
-                         select new
-                         {
-                             task_id = task.task_id
-                         }
-                         );
-            if (query.ToList().Count > 0)
-            {
-                return 101;//Dependency exists as this task is referred as ParentId for another tasks
-            }
-            else
-            {
-                Parenttask.Remove(Parenttask.Find(taskid));
-                Task.Remove(Task.Find(taskid));
-                return this.SaveChanges();
-            }
-        }
+        //public int RemoveTask(Int64 taskid)
+        //{
+        //    var query = (from task in Task
+        //                 where task.parent_id == taskid
+        //                 select new
+        //                 {
+        //                     task_id = task.task_id
+        //                 }
+        //                 );
+        //    if (query.ToList().Count > 0)
+        //    {
+        //        return 101;//Dependency exists as this task is referred as ParentId for another tasks
+        //    }
+        //    else
+        //    {
+        //        Parenttask.Remove(Parenttask.Find(taskid));
+        //        Task.Remove(Task.Find(taskid));
+        //        return this.SaveChanges();
+        //    }
+        //}
         public int EndTask(Int64 taskid)
         {
             Tasks t = Task.Find(taskid);
@@ -168,17 +168,17 @@ namespace CaseStudy.DataLayer
             else
                 return 0;
         }
-        public int RemoveUser(CaseStudy.Entities.User user)
-        {
-            if (user.user_id > 0)
-            {
-                CaseStudy.Entities.User u = users.Find(user.user_id);
-                users.Remove(u);
-                return this.SaveChanges();
-            }
-            else
-                return 0;
-        }
+        //public int RemoveUser(CaseStudy.Entities.User user)
+        //{
+        //    if (user.user_id > 0)
+        //    {
+        //        CaseStudy.Entities.User u = users.Find(user.user_id);
+        //        users.Remove(u);
+        //        return this.SaveChanges();
+        //    }
+        //    else
+        //        return 0;
+        //}
         public int AddProject(Project proj, Int64 user_id)
         {
             proj = projects.Add(proj);

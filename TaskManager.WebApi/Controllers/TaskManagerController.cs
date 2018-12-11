@@ -81,12 +81,12 @@ namespace CaseStudy.WebApi.Controllers
             return Ok(t);
         }
 
-        [HttpPost]
-        [Route("api/RemoveTaskByID")]
-        public int RemoveTask(Int64 taskid)
-        {
-            return bl.RemoveTask(taskid);
-        }
+        //[HttpPost]
+        //[Route("api/RemoveTaskByID")]
+        //public int RemoveTask(Int64 taskid)
+        //{
+        //    return bl.RemoveTask(taskid);
+        //}
 
         [HttpGet]
         [Route("api/EndTask/{taskid}")]
