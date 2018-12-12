@@ -20,7 +20,7 @@ namespace TaskManager.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.EnableCors(new EnableCorsAttribute("http://localhost:4200,http://localhost:4201,http://localhost:4202,http://localhost:4203", headers: "*", methods: "*"));
+            config.EnableCors(new EnableCorsAttribute("http://localhost,http://localhost:4200,http://localhost:4201,http://localhost:4202,http://localhost:4203", headers: "*", methods: "*"));
         }
     }
 }
